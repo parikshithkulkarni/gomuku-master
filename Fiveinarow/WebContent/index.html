@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ body {
+    margin-left: 100px;
+}
+
+.center_div {
+    border: 1px solid gray;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    background-color: #d0f0f6;
+    text-align: left;
+    padding: 8px;
+}
+table, td, th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+td,th {
+    height: 20px;
+    width: 20px;
+    vertical-align: bottom;
+} 
+</style>
+
+</head>
+<body>
+<script>
+function tableCreate(table){
+    var body = document.body,
+        tbl  = table
+    tbl.style.width  = '100px';
+    tbl.style.border = '1px solid black';
+
+    for(var i = 0; i < 3; i++){
+        var tr = tbl.insertRow();
+        for(var j = 0; j < 2; j++){
+            if(i == 2 && j == 1){
+                break;
+            } else {
+                var td = tr.insertCell();
+                td.appendChild(document.createTextNode('Cell'));
+                td.style.border = '1px solid black';
+                if(i == 1 && j == 1){
+                    td.setAttribute('rowSpan', '2');
+                }
+            }
+        }
+    }
+    body.appendChild(tbl);
+}
+var table = document.getElementById("table");
+table.innerHTML = tableCreate(table);
+</script>
+
+<div class="center_div">
+  <h1>Hello World!</h1>
+  
+  <table id="table">
+  </table>
+  
+</div>
+
+</body>
+</html>
